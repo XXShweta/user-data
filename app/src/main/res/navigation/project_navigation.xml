@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/project_navigation"
+    app:startDestination="@id/projectMainFrgament">
+
+    <fragment
+        android:id="@+id/projectMainFrgament"
+        android:name="com.e.mainproject.ui.fragment.ProjectMainFragment"
+        android:label="User's List"
+        tools:layout="@layout/main_project_fragment">
+        <action
+            android:id="@+id/action_projectMainFragment_to_projectDetailFrgament"
+            app:destination="@+id/projectDetailFrgament"
+            app:popUpToInclusive="true"
+            app:popUpTo="@+id/projectMainFrgament"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/projectDetailFrgament"
+        android:name="com.e.mainproject.ui.fragment.ProjectDetailFrgament"
+        android:label="User Detail"
+        tools:layout="@layout/detail_project_fragment">
+        <argument
+            android:name="userId"
+            android:defaultValue="-1"
+            app:argType="integer"/>
+    </fragment>
+
+</navigation>

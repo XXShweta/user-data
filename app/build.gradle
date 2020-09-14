@@ -1,0 +1,132 @@
+apply plugin: 'com.android.application'
+
+apply plugin: "androidx.navigation.safeargs"
+
+android {
+    compileSdkVersion rootProject.ext.androidCompileSdkVersion
+    buildToolsVersion rootProject.ext.buildVersion
+    defaultConfig {
+        applicationId rootProject.ext.applicationId
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        testInstrumentationRunner rootProject.ext.testInstrumentationRunner
+    }
+    buildTypes {
+        debug {
+            pseudoLocalesEnabled true
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+    sourceSets {
+        main.res.srcDirs = ["src/main/res", "src/main/res-by-feature"]
+        main {
+            java.srcDirs += 'build/generated/data_binding_base_class_source_out/debug/out'
+            file("src/main/res-by-feature")
+                    .listFiles()
+                    .each { res.srcDirs += it.path }
+        }
+        debug.assets.srcDirs = ["src/debug/assets/"]
+        release.assets.srcDirs = ["src/release/assets/"]
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+            returnDefaultValues = true
+        }
+
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lintOptions {
+        abortOnError false
+        ignoreWarnings true
+
+    }
+
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    def networkDependencies = rootProject.ext.networkDependencies
+    def offlineDependencies = rootProject.ext.offlineDependencies
+    def testDependencies = rootProject.ext.testDependencies
+    def googleDependency = rootProject.ext.googleDependency
+    def androidSupportDependency = rootProject.ext.androidSupportDependency
+
+
+    implementation androidSupportDependency.appcompatx
+    implementation androidSupportDependency.googleMaterial
+    implementation androidSupportDependency.constraintLayout
+
+    //Viewmodel And LiveData LifeCycle
+    implementation androidSupportDependency.lifecycleExt
+    implementation androidSupportDependency.lifecycleVersion
+
+
+    //Room Dependencies
+    implementation offlineDependencies.roomRuntime
+    implementation offlineDependencies.rxAndroid
+    implementation offlineDependencies.rxRoom
+    annotationProcessor offlineDependencies.roomAnotation
+
+    // OkHttp
+    implementation networkDependencies.okhttp
+    implementation networkDependencies.okhttpLogging
+    // Gson
+    implementation networkDependencies.gson
+    implementation networkDependencies.retrofitGsonConverter
+    implementation networkDependencies.rxRetrofitAdapter
+
+    def nav_version = "2.3.0"
+    //Navigation
+    implementation androidSupportDependency.navigationFragment
+    implementation androidSupportDependency.navigationUi
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
+
+    //Dagger
+    implementation googleDependency.daggerAndroid
+    implementation googleDependency.dagger
+    implementation googleDependency.daggerSupport
+    annotationProcessor googleDependency.daggerProcessor
+    annotationProcessor googleDependency.daggerCompiler
+
+
+    testImplementation testDependencies.assertJLibrary
+    testImplementation testDependencies.artifact
+    testImplementation testDependencies.junit
+    testImplementation testDependencies.json
+    testImplementation testDependencies.artifact
+
+    // AndroidJUnitRunner and JUnit Rules
+    androidTestImplementation testDependencies.testRunner
+    androidTestImplementation testDependencies.testRule
+
+    // Espresso dependencies
+    androidTestImplementation testDependencies.espressoCore
+
+    // Required -- JUnit 4 framework
+    testImplementation testDependencies.junit
+    // Optional -- Robolectric environment
+    testImplementation testDependencies.androidxTestCore
+    // Optional -- Mockito framework
+    testImplementation testDependencies.mockitoInline
+    testImplementation testDependencies.mockitoCore
+
+    implementation testDependencies.espressoIdling
+
+    //Work Manager
+    implementation androidSupportDependency.workManager
+
+}

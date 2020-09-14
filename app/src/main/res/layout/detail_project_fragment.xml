@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="projectDetailViewModel"
+            type="com.e.mainproject.ui.viewmodel.ProjectDetailViewModel" />
+
+        <variable
+            name="view"
+            type="android.view.View" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/root_detail_layout"
+        android:paddingLeft="@dimen/twenty_20dp"
+        android:paddingRight="@dimen/twenty_20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/tx_name_detail"
+            android:hint="@string/user_name_hint"
+            style="@style/text_16px_black_reg"
+            android:onTextChanged ="@{projectDetailViewModel.onNameTextChange}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/hundred_100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tx_name_error_msg"
+            android:visibility="@{projectDetailViewModel.showError? view.VISIBLE : view.INVISIBLE}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
+            style="@style/text_6px_black_reg"
+            android:text="@string/user_name_error_msg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tx_name_detail" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/tx_email_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/user_email_hint"
+            style="@style/text_16px_black_reg"
+            android:onTextChanged ="@{projectDetailViewModel.onEmailTextChange}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tx_name_error_msg" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tx_email_error_msg"
+            android:layout_width="match_parent"
+            android:visibility="@{projectDetailViewModel.showError? view.VISIBLE : view.INVISIBLE}"
+            android:layout_height="wrap_content"
+            style="@style/text_6px_black_reg"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintTop_toBottomOf="@+id/tx_email_detail"
+            android:text="@string/user_email_error_msg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/tx_submit_detail"
+            android:layout_marginLeft="@dimen/twenty_20dp"
+            android:layout_marginRight="@dimen/twenty_20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black_light"
+            style="@style/text_16px_black_bold"
+            android:textColor="@android:color/white"
+            android:text="@string/submit_button"
+            android:onClick="@{()-> projectDetailViewModel.onSubmitButtonClicked()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tx_email_detail" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

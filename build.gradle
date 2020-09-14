@@ -1,0 +1,132 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+
+    ext.nav_version = '2.3.0-alpha02'
+
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.5.2'
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
+    }
+}
+
+plugins {
+    id "com.jfrog.bintray" version "1.7.3"
+    id "com.github.dcendents.android-maven" version "2.0"
+    id "co.langapi.langplugin" version "1.3"
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+}
+
+ext {
+
+    // Android Default Configuration
+    androidCompileSdkVersion = 29
+    applicationId = 'com.e.mainproject'
+    buildVersion = "29.0.3"
+    minSdkVersion = 26
+    targetSdkVersion = 29
+    versionCode = 1
+    versionName = "1.0"
+    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+    testRunnerVersion = '1.2.0'
+    espressoCoreVersion = '3.2.0-alpha02'
+    androidxCoreVersion = '1.1.0'
+    junit = '4.12'
+    mockitoCoreVersion = '2.8.9'
+    assertJLibraryVersion = '1.7.1'
+    assertTestRules = '1.0.2'
+    robolectricVersion = '4.2'
+    espressoTestRuleVersion = '1.0.2'
+    orchestratorVersion = '1.0.1'
+    artifactVersion = '1.1.1'
+    espressocontrib_version = '2.2'
+    jsonVersion = '20180813'
+    jetpackLifecycleVersion = '2.2.0'
+    rxAndroidVersion = '2.1.1'
+    // Dependencies Version
+    retrofitVersion = '2.5.0'
+    okhttpVersion = '3.12.0'
+    okhttpLoggingVersion = '3.11.0'
+    gsonVersion = '2.8.5'
+    daggerVersion = '2.26'
+    googleMaterialVersion = '1.2.0-alpha02'
+    constraintVersion = '1.1.3'
+    imageCacheVersion ='4.11.0'
+    espressoIdlingVersion ='3.2.0'
+    work_version = '2.3.4'
+    // Android Api
+    networkDependencies = [
+            retrofit             : "com.squareup.retrofit2:retrofit:$retrofitVersion",
+            retrofitGsonConverter: "com.squareup.retrofit2:converter-gson:$retrofitVersion",
+            rxRetrofitAdapter    : "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion",
+            gson                 : "com.google.code.gson:gson:$gsonVersion",
+            okhttp               : "com.squareup.okhttp3:okhttp:$okhttpVersion",
+            okhttpLogging        : "com.squareup.okhttp3:logging-interceptor:$okhttpLoggingVersion"
+    ]
+
+    // Room components
+    offlineDependencies = [
+            roomRuntime  : "androidx.room:room-runtime:$jetpackLifecycleVersion",
+            roomAnotation: "androidx.room:room-compiler:$jetpackLifecycleVersion",
+            rxAndroid    : "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
+            rxRoom       : "androidx.room:room-rxjava2:$jetpackLifecycleVersion",
+
+    ]
+    testDependencies = [
+            testRunner      : "androidx.test:runner:$testRunnerVersion",
+            testRule        : "androidx.test:rules:$testRunnerVersion",
+            espressoCore    : "androidx.test.espresso:espresso-core:$espressoCoreVersion",
+            espressoIdling  : "androidx.test.espresso:espresso-idling-resource:$espressoIdlingVersion",
+            androidxTestCore: "androidx.test:core:$androidxCoreVersion",
+
+            // JUnit & Mockito
+            junit           : "junit:junit:$junit",
+            mockitoCore     : "org.mockito:mockito-core:$mockitoCoreVersion",
+            mockitoInline   : "org.mockito:mockito-inline:$mockitoCoreVersion",
+            assertJLibrary  : "org.assertj:assertj-core:$assertJLibraryVersion",
+
+            //Espresso
+            artifact        : "android.arch.core:core-testing:$artifactVersion",
+            espressoContrib : "androidx.test.espresso:espresso-contrib:$espressocontrib_version",
+            // JSON Added this library for unit testing on Json Object.
+            // It cant be Mocked directly, hence this library classes will be used instead of the
+            // Android framework ones while running the Unit test.
+            json            : "org.json:json:$jsonVersion"
+
+    ]
+    googleDependency = [
+            daggerAndroid    : "com.google.dagger:dagger-android:$daggerVersion",
+            dagger           : "com.google.dagger:dagger:$daggerVersion",
+            daggerSupport    : "com.google.dagger:dagger-android-support:$daggerVersion",
+            daggerProcessor  : "com.google.dagger:dagger-android-processor:$daggerVersion",
+            daggerCompiler   : "com.google.dagger:dagger-compiler:$daggerVersion",
+    ]
+
+
+    androidSupportDependency = [
+            navigationFragment: "androidx.navigation:navigation-fragment:$nav_version",
+            navigationUi      : "androidx.navigation:navigation-ui:$nav_version",
+            appcompatx        : "androidx.appcompat:appcompat:$androidxCoreVersion",
+            googleMaterial    : "com.google.android.material:material:$googleMaterialVersion",
+            constraintLayout  : "androidx.constraintlayout:constraintlayout:$constraintVersion",
+            lifecycleExt      : "androidx.lifecycle:lifecycle-extensions:$jetpackLifecycleVersion",
+            lifecycleVersion  : "androidx.lifecycle:lifecycle-viewmodel:$jetpackLifecycleVersion",
+            workManager       : "androidx.work:work-runtime:$work_version",
+    ]
+}
+
+
+

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="text_16px_black_bold">
+        <item name="android:textSize">@dimen/sixteen_16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:color">@color/black</item>
+    </style>
+
+    <style name="text_16px_black_reg">
+        <item name="android:textSize">@dimen/sixteen_16sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:color">@color/black_light</item>
+    </style>
+
+    <style name="text_6px_black_reg">
+        <item name="android:textSize">@dimen/six_6sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+</resources>

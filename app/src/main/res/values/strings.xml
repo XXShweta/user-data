@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">UserData</string>
+
+    <string name="title">Please select an option to proceed!</string>
+    <string name="delete_button">Delete</string>
+    <string name="update_button">Update</string>
+    <string name="submit_button">Submit</string>
+
+    <string name="no_user_data">No user data available, Please add new user!</string>
+    <string name="error_message">Something went wrong, Can you please try again!</string>
+    <string name="email_present">Email already registered, Please try new email address!! </string>
+
+    <string name="user_name">UserName: </string>
+    <string name="user_email">User Email: </string>
+
+    <string name="user_name_hint">Please enter user name!</string>
+    <string name="user_email_hint">Please enter email id!</string>
+
+    <string name="user_name_error_msg">User name should be 3 character long!</string>
+    <string name="user_email_error_msg">Email should contain @ and .com !</string>
+
+    <string name="alert_box">User Alert!</string>
+</resources>

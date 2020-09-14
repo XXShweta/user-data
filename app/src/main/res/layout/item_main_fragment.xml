@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="projectMainViewModel"
+            type="com.e.mainproject.ui.viewmodel.ProjectMainViewModel" />
+        <variable
+            name="entity"
+            type="com.e.mainproject.storage.roomDatabase.userDB.UserEntity" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/item_card_view"
+        android:layout_margin="@dimen/ten_10dp"
+        android:elevation="@dimen/ten_10dp"
+        android:background="@color/black_66"
+        android:onClick="@{()->projectMainViewModel.onItemClick(entity)}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/ten_10dp"
+        >
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/text_16px_black_bold"
+            android:text="@string/user_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tx_name"
+            android:layout_width="0dp"
+            android:paddingLeft="@dimen/ten_10dp"
+            android:layout_height="wrap_content"
+            style="@style/text_16px_black_reg"
+            android:text="@{entity.userName}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/appCompatTextView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/emailIdText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/user_email"
+            style="@style/text_16px_black_bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tx_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/text_16px_black_reg"
+            android:text="@{entity.userEmailId}"
+            android:paddingLeft="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/emailIdText"
+            app:layout_constraintTop_toBottomOf="@+id/tx_name"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</layout>

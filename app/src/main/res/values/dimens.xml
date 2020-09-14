@@ -1,0 +1,13 @@
+<resources>
+    <dimen name="zero_0dp">0dp</dimen>
+    <dimen name="six_6dp">6dp</dimen>
+    <dimen name="ten_10dp">10dp</dimen>
+    <dimen name="twenty_20dp">20dp</dimen>
+    <dimen name="hundred_100dp">100dp</dimen>
+
+    <dimen name="ten_10sp">10sp</dimen>
+    <dimen name="six_6sp">6sp</dimen>
+    <dimen name="twelve_12sp">12sp</dimen>
+    <dimen name="sixteen_16sp">16sp</dimen>
+
+</resources>
